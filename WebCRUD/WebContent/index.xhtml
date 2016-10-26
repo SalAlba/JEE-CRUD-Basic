@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>CRUD</title>
+</h:head>
+<h:body>
+	<h1>Index</h1>
+	
+	<h:link outcome="create" value="create"/>
+	<br/><br/>
+	
+	<h:dataTable value="#{defaultUserManager.allUsers}" var="user" border="2" cellpadding="2">
+
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{user.id}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Name</f:facet>
+			<h:outputText value="#{user.name}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Last Name</f:facet>
+			<h:outputText value="#{user.lastname}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Email</f:facet>
+			<h:outputText value="#{user.mail}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Pass</f:facet>
+			<h:outputText value="#{user.pass}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Type</f:facet>
+			<h:outputText value="#{user.type}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">IMG</f:facet>
+			<h:outputText value="#{user.img}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Modified</f:facet>
+			<h:outputText value="#{user.modified}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Created</f:facet>
+			<h:outputText value="#{user.created}" />
+		</h:column>
+				
+		<h:column>
+			<f:facet name="header">Action</f:facet>
+			<h:form>		
+			<h:commandLink action="#{defaultUserManager.updateUser(user)}" value="edit" />
+			-
+			<h:commandLink action="#{defaultUserManager.deleteUser(user.id)}" value="delete" onclick="return confirm('Are you sure ?')" />
+			</h:form>
+		</h:column>		
+
+	</h:dataTable>
+</h:body>
+</html>
