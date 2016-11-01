@@ -11,16 +11,14 @@
 <h:body>
 	<h1>Index</h1>
 	
-	<h:link outcome="create" value="create"/>
+	<h:link outcome="index" value="home"/>
 	<br/><br/>
 	
-	<h:dataTable value="#{defaultUserManager.allUsers}" var="user" border="2" cellpadding="2">
+	<h:dataTable value="#{defaultUserManager.user}" var="user" border="2" cellpadding="1">
 
 		<h:column>
-		<f:facet name="header">ID</f:facet>
-		<h:form>
-			<h:commandLink action="#{defaultUserManager.findById(user.id)}" value="#{user.id}"  />
-		</h:form>
+			<f:facet name="header">ID</f:facet>
+			<h:outputText value="#{user.id}" />
 		</h:column>
 		
 		<h:column>
@@ -61,18 +59,7 @@
 		<h:column>
 			<f:facet name="header">Created</f:facet>
 			<h:outputText value="#{user.created}" />
-		</h:column>	
-		
-		<h:column>
-			<f:facet name="header">Action</f:facet>
-			<h:form>		
-			<h:commandLink action="#{defaultUserManager.viewUser(user)}" value="view "  />
-			-
-			<h:commandLink action="#{defaultUserManager.updateUser(user)}" value="edit" />
-			-
-			<h:commandLink action="#{defaultUserManager.deleteUser(user.id)}" value="delete" onclick="return confirm('Are you sure ?')" />
-			</h:form>
-		</h:column>		
+		</h:column>
 
 	</h:dataTable>
 </h:body>
